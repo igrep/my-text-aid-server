@@ -6,13 +6,20 @@ import Web.Scotty
 import Control.Monad.IO.Class
 import Control.Monad
 import qualified Data.ByteString.Lazy as BSL
+import qualified Data.Text.Lazy.IO as TLI
 import System.IO
 import System.Process
 import System.Environment
 import System.Directory
+import Network.HTTP.Types.Status
 
 main :: IO ()
 main = scotty 61000 $ do
+  defaultHandler $ \t -> do
+    liftIO $ TLI.putStrLn t
+    status $ internalServerError500
+    text t
+
   post "/" $ do
     bs <- body
     (path, h) <- liftIO createTemporaryFileForEditor
