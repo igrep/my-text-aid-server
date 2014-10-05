@@ -17,7 +17,9 @@ import Network.HTTP.Types.Status
 main :: IO ()
 main = scotty 61000 $ do
   defaultHandler $ \t -> do
-    liftIO $ TLI.putStrLn t
+    liftIO $ do
+      logPath <- (++ "MyTextAidServer-Error.log") <$> getHomeDirectory
+      TLI.appendFile logPath t
     status $ internalServerError500
     text t
 
