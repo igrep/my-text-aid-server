@@ -10,7 +10,6 @@ Cabal-Version:          >= 1.10
 Build-Type:             Simple
 
 Executable my-text-aid-server
-  Type:                 exitcode-stdio-1.0
   Default-Language:     Haskell2010
   Hs-Source-Dirs:       src
   Ghc-Options:          -Wall
