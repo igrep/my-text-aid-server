@@ -17,7 +17,10 @@ Executable my-text-aid-server
   Build-Depends:          base
                         , scotty
                         , temporary
+                        , directory
                         , process
+                        , transformers
+                        , bytestring
 
 Source-Repository head
   Type:                 git
