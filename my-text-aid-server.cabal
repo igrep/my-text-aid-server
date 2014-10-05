@@ -16,7 +16,6 @@ Executable my-text-aid-server
   Main-Is:              Main.hs
   Build-Depends:          base
                         , scotty
-                        , temporary
                         , directory
                         , process
                         , transformers
