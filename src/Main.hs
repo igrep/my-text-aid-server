@@ -6,6 +6,7 @@ import Web.Scotty
 import Control.Monad.IO.Class
 import Control.Monad
 import qualified Data.ByteString.Lazy as BSL
+import qualified Data.ByteString as BS
 import qualified Data.Text.Lazy.IO as TLI
 import System.IO
 import System.Process
@@ -41,6 +42,6 @@ editBinaryOnFile bs path h = do
   BSL.hPut h bs
   hClose h
   callProcess "gvim" [path]
-  r <- BSL.readFile path
+  r <- BS.readFile path
   removeFileIfExist path
-  return r
+  return $ BSL.fromStrict r
